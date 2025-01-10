@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>IntelligentSquad - Exploits</title>
+<style>
+    @font-face {
+        font-family: 'Minecraft';
+        src: url('minecraft.ttf') format('truetype');
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        font-family: 'Minecraft', Arial, sans-serif;
+        background: linear-gradient(120deg, #1e1e1e, #2c2c2c, #1e1e1e);
+        background-size: 200% 200%;
+        animation: gradientAnimation 20s ease infinite;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+        margin: 0.5em 0;
+        font-family: 'Minecraft', Arial, sans-serif;
+    }
+
+    .header .highlight {
+        color: rgba(3, 252, 227);
+        font-weight: bold;
+    }
+
+    .header p, .header r {
+        font-size: 1.2em;
+        color: #ccc;
+        font-family: 'Minecraft', Arial, sans-serif;
+    }
+
+    .header .buttons {
+        margin-top: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header .buttons i {
+        font-size: 2em;
+        color: #fff;
+        transition: color 0.3s;
+        cursor: pointer;
+    }
+
+    .header .buttons i:hover {
+        color: #007aff;
+    }
+
+    .header .buttons a:first-child {
+        margin-right: 10px;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0.5em;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+    }
+
+    footer a.creator {
+        color: #0077cc;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    footer a.creator:hover {
+        color: #00aaff;
+    }
+</style>
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <h1><span class="highlight">Gasol1ne</h1>
+            <p>All servers will be destroyed the second we arrive!</p>
+            <r>Collaboration - me@Gasol1ne.guru</r>
+            <div class="buttons">
+                <a href="https://discord.gg/zz2PfSY3Na" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="https://t.me/mcintsq" target="_blank"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Website created by <a href="https://Gasol1ne.guru" target="_blank" class="creator">Gasol1ne</a></p>
+    </footer>
+</body>
+</html>
