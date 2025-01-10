@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,8 @@
 
         body {
             font-family: 'Minecraft', Arial, sans-serif;
-            background: url('background.gif') no-repeat center center fixed; /* Гифка на фон */
-            background-size: cover; /* Масштабирование гифки */
+            background: url('background.gif') no-repeat center center fixed; 
+            background-size: cover; 
             margin: 0;
             padding: 0;
             overflow: hidden;
@@ -27,43 +27,43 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Темный прозрачный фильтр */
-            backdrop-filter: blur(5px); /* Блюр на фон */
+            background: rgba(0, 0, 0, 0.6); 
+            backdrop-filter: blur(5px); 
             z-index: 1;
         }
 
         .content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         .content-box {
-            background-color: rgba(0, 0, 0, 0.7); /* Черный прозрачный прямоугольник */
-            border-radius: 20px; /* Закругленные углы */
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
             padding: 30px;
-            display: inline-block;
             text-align: center;
+            width: 400px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
         .round {
             border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            margin-bottom: 20px;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px auto;
             border: 2px solid #c9d1d9;
         }
 
         #animated-title {
             font-family: 'Minecraft', Arial, sans-serif;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: bold;
-            margin-bottom: 20px;
             color: #58a6ff;
+            margin-bottom: 10px;
         }
 
         .fade-in {
@@ -84,47 +84,27 @@
 
         p {
             font-family: 'Minecraft', Arial, sans-serif;
-            font-size: 18px;
-            margin: 20px 0;
+            font-size: 16px;
             color: #c9d1d9;
+            margin-bottom: 10px;
         }
 
         .icons a {
             font-size: 24px;
             color: #58a6ff;
-            margin: 0 10px;
             text-decoration: none;
-        }
-
-        .icons a:hover {
-            color: #1f6feb;
+            margin-bottom: 20px;
         }
 
         .audio-player {
-            margin-top: 20px;
-            background-color: rgba(22, 27, 34, 0.9); /* Прозрачный темный фон для плеера */
+            margin: 20px auto 10px auto;
+            background-color: #161b22;
             border-radius: 8px;
-            padding: 15px;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .controls {
+            padding: 10px 15px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        #play-pause, #mute-unmute {
-            background: none;
-            border: none;
-            color: #c9d1d9;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        #play-pause:hover, #mute-unmute:hover {
-            color: #58a6ff;
+            width: 100%;
+            max-width: 350px;
         }
 
         .progress-container {
@@ -148,9 +128,9 @@
         }
 
         .copyright {
-            margin-top: 20px;
-            font-size: 14px;
+            font-size: 12px;
             color: #8b949e;
+            margin-top: 20px;
         }
 
         .copyright a {
@@ -167,27 +147,27 @@
     <div class="content">
         <div class="content-box">
             <img src="Gasol1ne.jpg" alt="Gasol1ne" class="round">
-            <div id="animated-title"></div>
-            <p>Команда временно недоступна.</p>
+            <div id="animated-title">Gasol1ne</div>
+            <p>The command is temporarily unavailable.</p>
 
             <div class="icons">
                 <a href="https://discord.gg/mqYDak9jxM" target="_blank"><i class="fab fa-discord"></i></a>
             </div>
 
             <div class="audio-player">
-                <div class="controls">
-                    <button id="play-pause"><i class="fas fa-play"></i></button>
-                    <div class="progress-container">
-                        <div class="progress-bar" id="progress-bar"></div>
-                    </div>
-                    <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01">
-                    <button id="mute-unmute"><i class="fas fa-volume-up"></i></button>
+                <button id="play-pause"><i class="fas fa-play"></i></button>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
                 </div>
+                <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01">
+                <button id="mute-unmute"><i class="fas fa-volume-up"></i></button>
             </div>
 
             <audio id="audio" src="music.mp3"></audio>
 
-            <p class="copyright">© <a href="#">Gasol1ne.ru</a> 2024 | Копирование материалов запрещено.</p>
+            <p class="copyright">
+                © <a href="#">Gasol1ne.ru</a> 2024 | Copying of materials is prohibited.
+            </p>
         </div>
     </div>
 
