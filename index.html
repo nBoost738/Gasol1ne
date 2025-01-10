@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница Gasol1ne</title>
+    <title>Gasol1ne</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('./fonts/minecraft.ttf') format('truetype');
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #0d1117; /* Темный фон */
-            color: #c9d1d9; /* Светлый текст */
+            font-family: 'Minecraft', Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
             margin: 0;
             padding: 0;
         }
@@ -30,9 +35,11 @@
         }
 
         #animated-title {
+            font-family: 'Minecraft', Arial, sans-serif;
             font-size: 32px;
             font-weight: bold;
             margin-bottom: 20px;
+            color: #58a6ff;
         }
 
         .fade-in {
@@ -52,13 +59,14 @@
         }
 
         p {
+            font-family: 'Minecraft', Arial, sans-serif;
             font-size: 18px;
             margin: 20px 0;
         }
 
         .icons a {
             font-size: 24px;
-            color: #58a6ff; /* Ссылки в стиле GitHub */
+            color: #58a6ff;
             margin: 0 10px;
             text-decoration: none;
         }
