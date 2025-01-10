@@ -14,7 +14,7 @@
         body {
             font-family: 'Minecraft', Arial, sans-serif;
             background: url('background.gif') no-repeat center center fixed; 
-            background-size: cover; 
+            background-size: cover;
             margin: 0;
             padding: 0;
             overflow: hidden;
@@ -66,6 +66,54 @@
             margin-bottom: 10px;
         }
 
+        #animated-title span {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        #animated-title span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        #animated-title span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        #animated-title span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        #animated-title span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        #animated-title span:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        #animated-title span:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        #animated-title span:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        #animated-title span:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         p {
             font-family: 'Minecraft', Arial, sans-serif;
             font-size: 16px;
@@ -106,7 +154,7 @@
             background: none;
             border: none;
             color: #58a6ff;
-            font-size: 26px;
+            font-size: 26px; 
             cursor: pointer;
             padding: 10px;
             border-radius: 50%; 
@@ -119,7 +167,7 @@
 
         .progress-container {
             flex: 1;
-            height: 8px; 
+            height: 8px;
             background: #3b4048;
             margin: 0 10px;
             border-radius: 5px;
@@ -136,7 +184,7 @@
 
         .volume-slider {
             width: 100px;
-            border-radius: 10px; 
+            border-radius: 10px;
             appearance: none;
             background: #3b4048;
             height: 8px;
@@ -181,7 +229,9 @@
     <div class="content">
         <div class="content-box">
             <img src="Gasol1ne.jpg" alt="Gasol1ne" class="round">
-            <div id="animated-title">Gasol1ne</div>
+            <div id="animated-title">
+                <span>G</span><span>a</span><span>s</span><span>o</span><span>l</span><span>1</span><span>n</span><span>e</span>
+            </div>
             <p>The command is temporarily unavailable.</p>
 
             <div class="icons">
@@ -204,65 +254,5 @@
             </p>
         </div>
     </div>
-
-    <script>
-        const text = "Gasol1ne";
-        const textContainer = document.getElementById('animated-title');
-        let index = 0;
-
-        function showNextLetter() {
-            const span = document.createElement('span');
-            span.className = 'fade-in';
-            span.textContent = text[index];
-            textContainer.appendChild(span);
-            index++;
-
-            if (index < text.length) {
-                setTimeout(showNextLetter, 100);
-            }
-        }
-
-        showNextLetter();
-
-        const audio = document.getElementById('audio');
-        const playPauseBtn = document.getElementById('play-pause');
-        const muteUnmuteBtn = document.getElementById('mute-unmute');
-        const progressBar = document.getElementById('progress-bar');
-        const volumeSlider = document.getElementById('volume');
-
-        let isPlaying = false;
-
-        playPauseBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                audio.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            } else {
-                audio.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            }
-            isPlaying = !isPlaying;
-        });
-
-        audio.addEventListener('timeupdate', () => {
-            const progress = (audio.currentTime / audio.duration) * 100;
-            progressBar.style.width = `${progress}%`;
-        });
-
-        volumeSlider.addEventListener('input', (e) => {
-            audio.volume = e.target.value;
-        });
-
-        muteUnmuteBtn.addEventListener('click', () => {
-            audio.muted = !audio.muted;
-            muteUnmuteBtn.innerHTML = audio.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-        });
-
-        document.querySelector('.progress-container').addEventListener('click', (e) => {
-            const width = e.currentTarget.clientWidth;
-            const clickX = e.offsetX;
-            const duration = audio.duration;
-            audio.currentTime = (clickX / width) * duration;
-        });
-    </script>
 </body>
 </html>
