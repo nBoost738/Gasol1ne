@@ -79,28 +79,11 @@
             overflow: hidden;
             white-space: nowrap;
             border-right: 2px solid #58a6ff;
-            width: 25ch;
-            animation: typing 4s steps(25, end), pause 2s, deleting 4s steps(25, end) infinite;
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 25ch; }
-        }
-
-        @keyframes pause {
-            from { width: 25ch; }
-            to { width: 25ch; }
-        }
-
-        @keyframes deleting {
-            from { width: 25ch; }
-            to { width: 0; }
-        }
-
-        @keyframes blink {
-            from { border-color: transparent; }
-            to { border-color: #58a6ff; }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #58a6ff; }
         }
 
         .icons a {
@@ -235,7 +218,7 @@
             <div id="animated-title">
                 <span>G</span><span>a</span><span>s</span><span>o</span><span>l</span><span>1</span><span>n</span><span>e</span>
             </div>
-            <p class="animated-text">The command is temporarily unavailable.</p>
+            <p class="animated-text" id="typing-text"></p>
 
             <div class="icons">
                 <a href="https://discord.gg/mqYDak9jxM" target="_blank"><i class="fab fa-discord"></i></a>
@@ -311,6 +294,29 @@
         };
 
         setInterval(createSnowflake, 200);
+
+        const typingText = document.getElementById('typing-text');
+        const text = "The command is temporarily unavailable.";
+
+        async function typeAndDeleteText() {
+            while (true) {
+                for (let i = 0; i <= text.length; i++) {
+                    typingText.textContent = text.substring(0, i);
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                for (let i = text.length; i >= 0; i--) {
+                    typingText.textContent = text.substring(0, i);
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                }
+
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+        }
+
+        typeAndDeleteText();
     </script>
 </body>
 </html>
