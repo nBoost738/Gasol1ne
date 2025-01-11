@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gasol1ne</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         @font-face {
@@ -18,9 +19,9 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            border: 10px solid rgba(88, 166, 255, 0.5); /* Добавили обводку */
+            border: 10px solid rgba(88, 166, 255, 0.5);
             box-shadow: 0 0 20px rgba(88, 166, 255, 0.8);
-            user-select: none; /* Отключение выделения текста */
+            user-select: none;
         }
 
         body::before {
@@ -46,6 +47,7 @@
 
         .content-box {
             background-color: rgba(0, 0, 0, 0.8); 
+            border: 3px solid rgba(88, 166, 255, 0.5); /* Обводка под черным фоном */
             border-radius: 20px; 
             padding: 30px;
             text-align: center;
@@ -59,7 +61,7 @@
             height: 120px;
             margin: 0 auto 20px auto;
             border: 2px solid #c9d1d9;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Тень для аватарки */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         #animated-title {
@@ -70,74 +72,27 @@
             margin-bottom: 10px;
         }
 
-        #animated-title span {
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-
-        #animated-title span:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        #animated-title span:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        #animated-title span:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        #animated-title span:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-
-        #animated-title span:nth-child(5) {
-            animation-delay: 0.4s;
-        }
-
-        #animated-title span:nth-child(6) {
-            animation-delay: 0.5s;
-        }
-
-        #animated-title span:nth-child(7) {
-            animation-delay: 0.6s;
-        }
-
-        #animated-title span:nth-child(8) {
-            animation-delay: 0.7s;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Анимация текста "The command is temporarily unavailable." */
         p {
             font-family: 'Minecraft', Arial, sans-serif;
             font-size: 16px;
             color: #c9d1d9;
             margin-bottom: 10px;
-            white-space: nowrap;
             overflow: hidden;
-            display: inline-block;
-            animation: typing 3s steps(30, end) infinite, blink 0.5s step-end infinite alternate;
+            white-space: nowrap;
+            border-right: 2px solid #58a6ff;
+            width: 25ch;
+            animation: typing 4s steps(25, end) infinite, blink 0.6s step-end infinite;
         }
 
         @keyframes typing {
             from { width: 0; }
-            to { width: 100%; }
+            to { width: 25ch; }
         }
 
         @keyframes blink {
-            from { border-right: 2px solid transparent; }
-            to { border-right: 2px solid #58a6ff; }
+            from { border-color: transparent; }
+            to { border-color: #58a6ff; }
         }
 
         .icons a {
@@ -145,12 +100,13 @@
             color: #58a6ff;
             text-decoration: none;
             margin: 10px 0;
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .icons a:hover {
             color: #1f6feb;
-            transform: scale(1.2); /* Эффект увеличения при наведении */
+            transform: scale(1.2); 
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.8);
         }
 
         .audio-player {
@@ -180,22 +136,6 @@
             padding: 10px;
             border-radius: 50%; 
             transition: background 0.3s ease;
-            position: relative;
-        }
-
-        #play-pause:hover::after, #mute-unmute:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #161b22;
-            color: #58a6ff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            white-space: nowrap;
-            opacity: 1;
         }
 
         #play-pause:hover, #mute-unmute:hover {
@@ -280,26 +220,9 @@
             opacity: var(--opacity);
             animation: snowfall calc(3s + 3 * var(--size)) linear infinite;
         }
-
-        /* Отключение контекстного меню */
-        body {
-            -webkit-user-select: none; /* Отключение выделения для Chrome, Safari */
-            -moz-user-select: none; /* Отключение выделения для Firefox */
-            -ms-user-select: none; /* Отключение выделения для IE */
-            user-select: none; /* Общее правило */
-        }
-
-        body, img {
-            pointer-events: none; /* Отключение взаимодействия с изображениями */
-        }
-
-        body::-webkit-scrollbar {
-            display: none; /* Убрать полосу прокрутки */
-        }
-
     </style>
 </head>
-<body oncontextmenu="return false">
+<body>
     <div class="content">
         <div class="content-box">
             <img src="Gasol1ne.jpg" alt="Gasol1ne" class="round">
@@ -313,12 +236,12 @@
             </div>
 
             <div class="audio-player">
-                <button id="play-pause" data-tooltip="Play/Pause"><i class="fas fa-play"></i></button>
+                <button id="play-pause"><i class="fas fa-play"></i></button>
                 <div class="progress-container">
                     <div class="progress-bar" id="progress-bar"></div>
                 </div>
                 <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01">
-                <button id="mute-unmute" data-tooltip="Mute/Unmute"><i class="fas fa-volume-up"></i></button>
+                <button id="mute-unmute"><i class="fas fa-volume-up"></i></button>
             </div>
 
             <p class="copyright">
@@ -328,7 +251,7 @@
     </div>
 
     <script>
-        const audio = document.getElementById('audio');
+        const audio = new Audio('music.mp3');
         const playPauseBtn = document.getElementById('play-pause');
         const muteUnmuteBtn = document.getElementById('mute-unmute');
         const progressBar = document.getElementById('progress-bar');
