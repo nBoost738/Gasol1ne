@@ -80,12 +80,22 @@
             white-space: nowrap;
             border-right: 2px solid #58a6ff;
             width: 25ch;
-            animation: typing 4s steps(25, end) 0s infinite alternate, blink 0.7s step-end infinite;
+            animation: typing 4s steps(25, end), pause 2s, deleting 4s steps(25, end) infinite;
         }
 
         @keyframes typing {
             from { width: 0; }
             to { width: 25ch; }
+        }
+
+        @keyframes pause {
+            from { width: 25ch; }
+            to { width: 25ch; }
+        }
+
+        @keyframes deleting {
+            from { width: 25ch; }
+            to { width: 0; }
         }
 
         @keyframes blink {
