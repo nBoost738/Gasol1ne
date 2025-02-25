@@ -1,322 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gasol1ne</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        @font-face {
-            font-family: 'Minecraft';
-            src: url('minecraft.ttf') format('truetype');
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gasol1ne</title>
+  <style>
+    /* Подключение шрифта Minecraft */
+    @font-face {
+      font-family: 'Minecraft';
+      src: url('minecraft.ttf') format('truetype');
+    }
 
-        body {
-            font-family: 'Minecraft', Arial, sans-serif;
-            background: url('background.gif') no-repeat center center fixed; 
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            border: 10px solid rgba(0, 0, 0, 0.8);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            user-select: none;
-        }
+    /* Основные стили */
+    body {
+      font-family: 'Minecraft', sans-serif;
+      background-color: #1a1a1a; /* Темно-серый фон */
+      color: #ffffff; /* Белый текст */
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6); 
-            backdrop-filter: blur(5px); 
-            z-index: 1;
-        }
+    /* Контейнер для всего контента */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+    /* Заголовок сайта */
+    header {
+      text-align: center;
+      padding: 50px 0;
+      background-color: #2d2d2d; /* Темный фон для шапки */
+      border-bottom: 4px solid #6a0dad; /* Фиолетовая линия */
+    }
 
-        .content-box {
-            background-color: rgba(0, 0, 0, 0.8); 
-            border: 3px solid rgba(88, 166, 255, 0.5);
-            border-radius: 20px; 
-            padding: 30px;
-            text-align: center;
-            width: 400px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
+    header h1 {
+      font-size: 48px;
+      color: #6a0dad; /* Фиолетовый цвет */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
 
-        .round {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px auto;
-            border: 2px solid #c9d1d9;
-        }
+    header p {
+      font-size: 24px;
+      color: #a0a0a0; /* Серый текст */
+    }
 
-        #animated-title {
-            font-family: 'Minecraft', Arial, sans-serif;
-            font-size: 28px;
-            font-weight: bold;
-            color: #58a6ff;
-            margin-bottom: 10px;
-        }
+    /* Кнопка для музыки */
+    .music-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
 
-        .animated-text {
-            font-family: 'Minecraft', Arial, sans-serif;
-            font-size: 16px;
-            color: #c9d1d9;
-            margin-bottom: 10px;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid #58a6ff;
-        }
+    .music-button:hover {
+      background-color: #4b0082; /* Темно-фиолетовый */
+    }
 
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #58a6ff; }
-        }
+    /* Секции */
+    section {
+      padding: 50px 0;
+      border-bottom: 2px solid #6a0dad;
+    }
 
-        .icons a {
-            font-size: 32px; 
-            color: #58a6ff;
-            text-decoration: none;
-            margin: 10px 0;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+    section h2 {
+      font-size: 36px;
+      color: #6a0dad;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
 
-        .icons a:hover {
-            color: #1f6feb;
-            transform: scale(1.2); 
-        }
+    section p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #a0a0a0;
+    }
 
-        .audio-player {
-            margin: 20px auto 10px auto;
-            background-color: #161b22;
-            border-radius: 8px;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 350px;
-        }
+    /* Проекты */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
 
-        .controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
+    .project-card {
+      background-color: #2d2d2d;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        #play-pause, #mute-unmute {
-            background: none;
-            border: none;
-            color: #58a6ff;
-            font-size: 26px; 
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 50%; 
-            transition: background 0.3s ease;
-        }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
 
-        #play-pause:hover, #mute-unmute:hover {
-            background: rgba(88, 166, 255, 0.2); 
-        }
+    .project-card h3 {
+      font-size: 24px;
+      color: #6a0dad;
+      margin-bottom: 10px;
+    }
 
-        .progress-container {
-            flex: 1;
-            height: 8px;
-            background: #3b4048;
-            margin: 0 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            overflow: hidden;
-        }
+    .project-card p {
+      font-size: 18px;
+      color: #a0a0a0;
+    }
 
-        .progress-bar {
-            height: 100%;
-            background: #58a6ff;
-            width: 0%;
-            border-radius: 5px;
-        }
+    /* Футер */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #2d2d2d;
+      border-top: 4px solid #6a0dad;
+      margin-top: 50px;
+    }
 
-        .volume-slider {
-            width: 100px;
-            border-radius: 10px;
-            appearance: none;
-            background: #3b4048;
-            height: 8px;
-            outline: none;
-            cursor: pointer;
-        }
+    footer p {
+      font-size: 18px;
+      color: #a0a0a0;
+    }
 
-        .volume-slider::-webkit-slider-thumb {
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: #58a6ff;
-            cursor: pointer;
-        }
+    /* Анимации */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
-        .volume-slider::-moz-range-thumb {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: #58a6ff;
-            cursor: pointer;
-        }
-
-        .copyright {
-            font-size: 12px;
-            color: #8b949e;
-            margin-top: 20px;
-        }
-
-        .copyright a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-
-        .copyright a:hover {
-            text-decoration: underline;
-        }
-
-        @keyframes snowfall {
-            from {
-                transform: translateY(-100px);
-            }
-            to {
-                transform: translateY(100vh);
-            }
-        }
-
-        .snowflake {
-            position: fixed;
-            top: -50px;
-            left: calc(100% * var(--x));
-            font-size: calc(10px + 10 * var(--size));
-            color: #c9d1d9;
-            opacity: var(--opacity);
-            animation: snowfall calc(3s + 3 * var(--size)) linear infinite;
-        }
-    </style>
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+  </style>
 </head>
 <body>
-    <div class="content">
-        <div class="content-box">
-            <img src="Gasol1ne.jpg" alt="Gasol1ne" class="round">
-            <div id="animated-title">
-                <span>G</span><span>a</span><span>s</span><span>o</span><span>l</span><span>1</span><span>n</span><span>e</span>
-            </div>
-            <p class="animated-text" id="typing-text"></p>
-
-            <div class="icons">
-                <a href="https://discord.gg/mqYDak9jxM" target="_blank"><i class="fab fa-discord"></i></a>
-            </div>
-
-            <div class="audio-player">
-                <button id="play-pause"><i class="fas fa-play"></i></button>
-                <div class="progress-container">
-                    <div class="progress-bar" id="progress-bar"></div>
-                </div>
-                <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01">
-                <button id="mute-unmute"><i class="fas fa-volume-up"></i></button>
-            </div>
-
-            <p class="copyright">
-                © <a href="#">Gasol1ne.ru</a> 2025 | Copying of materials is prohibited.
-            </p>
-        </div>
+  <!-- Шапка сайта -->
+  <header class="fade-in">
+    <div class="container">
+      <h1>Gasol1ne</h1>
+      <p>Владелец: Gasol1ne</p>
     </div>
+  </header>
 
-    <script>
-        const audio = new Audio('music.mp3');
-        const playPauseBtn = document.getElementById('play-pause');
-        const muteUnmuteBtn = document.getElementById('mute-unmute');
-        const progressBar = document.getElementById('progress-bar');
-        const progressContainer = document.querySelector('.progress-container');
-        const volumeSlider = document.getElementById('volume');
+  <!-- Кнопка для музыки -->
+  <button class="music-button" onclick="toggleMusic()">🎵 Включить музыку</button>
 
-        playPauseBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                audio.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-        });
+  <!-- Основной контент -->
+  <div class="container">
+    <!-- Секция "Обо мне" -->
+    <section class="fade-in">
+      <h2>Обо мне</h2>
+      <p>
+        Привет! Меня зовут Даниил, мне 17 лет, и я занимаюсь разработкой плагинов на Java и веб-приложений.
+        Уже более 2 лет я создаю уникальные игровые механики и поддерживаю серверы с высокой посещаемостью.
+      </p>
+    </section>
 
-        muteUnmuteBtn.addEventListener('click', () => {
-            audio.muted = !audio.muted;
-            muteUnmuteBtn.innerHTML = audio.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-        });
+    <!-- Секция "Проекты" -->
+    <section class="fade-in">
+      <h2>Мои проекты</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>RionCloud</h3>
+          <p>Главная страница хостинга с 3D-моделями.</p>
+        </div>
+        <div class="project-card">
+          <h3>ZBots</h3>
+          <p>Боты для фарма на серверах Minecraft.</p>
+        </div>
+        <div class="project-card">
+          <h3>GriefTool</h3>
+          <p>Проект для автоматизации задач в Minecraft.</p>
+        </div>
+      </div>
+    </section>
 
-        audio.addEventListener('timeupdate', () => {
-            const progressPercent = (audio.currentTime / audio.duration) * 100;
-            progressBar.style.width = `${progressPercent}%`;
-        });
+    <!-- Секция "Контакты" -->
+    <section class="fade-in">
+      <h2>Контакты</h2>
+      <p>
+        Свяжитесь со мной через:
+        <a href="https://github.com/Gasol1ne" style="color: #6a0dad;">GitHub</a> или
+        <a href="https://t.me/Gasol1ne" style="color: #6a0dad;">Telegram</a>.
+      </p>
+    </section>
+  </div>
 
-        progressContainer.addEventListener('click', (e) => {
-            const width = progressContainer.clientWidth;
-            const clickX = e.offsetX;
-            const duration = audio.duration;
+  <!-- Футер -->
+  <footer class="fade-in">
+    <div class="container">
+      <p>© 2024 Gasol1ne. Все права защищены.</p>
+    </div>
+  </footer>
 
-            audio.currentTime = (clickX / width) * duration;
-        });
+  <!-- Скрипт для музыки -->
+  <script>
+    let isPlaying = false;
+    const audio = new Audio('music.mp3'); // Добавьте файл музыки в папку с проектом
 
-        volumeSlider.addEventListener('input', (e) => {
-            audio.volume = e.target.value;
-        });
-
-        const createSnowflake = () => {
-            const snowflake = document.createElement('i');
-            snowflake.classList.add('snowflake');
-            snowflake.style.setProperty('--x', Math.random());
-            snowflake.style.setProperty('--size', Math.random());
-            snowflake.style.setProperty('--opacity', Math.random());
-            snowflake.innerText = '*';
-            document.body.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 6000);
-        };
-
-        setInterval(createSnowflake, 200);
-
-        const typingText = document.getElementById('typing-text');
-        const text = "The command is temporarily unavailable.";
-
-        async function typeAndDeleteText() {
-            while (true) {
-                for (let i = 0; i <= text.length; i++) {
-                    typingText.textContent = text.substring(0, i);
-                    await new Promise(resolve => setTimeout(resolve, 100));
-                }
-
-                await new Promise(resolve => setTimeout(resolve, 2000));
-
-                for (let i = text.length; i >= 0; i--) {
-                    typingText.textContent = text.substring(0, i);
-                    await new Promise(resolve => setTimeout(resolve, 50));
-                }
-
-                await new Promise(resolve => setTimeout(resolve, 500));
-            }
-        }
-
-        typeAndDeleteText();
-    </script>
+    function toggleMusic() {
+      if (isPlaying) {
+        audio.pause();
+        document.querySelector('.music-button').textContent = '🎵 Включить музыку';
+      } else {
+        audio.play();
+        document.querySelector('.music-button').textContent = '🔇 Выключить музыку';
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
 </body>
 </html>
